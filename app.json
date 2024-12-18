@@ -10,7 +10,10 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.audiobook-player"
+      "bundleIdentifier": "com.anonymous.audiobook-player",
+      "infoPlist": {
+				"UIBackgroundModes": ["audio"]
+			}
     },
     "android": {
       "adaptiveIcon": {

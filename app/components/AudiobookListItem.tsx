@@ -6,15 +6,10 @@ import { defaultStyles } from "@/styles/styles";
 import { colors, fontSize } from "@/constants/constants";
 import * as Progress from "react-native-progress";
 import { Entypo } from "@expo/vector-icons";
+import { ExtendedTrack } from "./AudiobookList";
 
 export type AudiobookListItemProps = {
-  track: {
-    title: string;
-    image?: string;
-    author?: string;
-    total?: number;
-    current?: number;
-  };
+  track: ExtendedTrack
 };
 
 export default function AudiobookListItem({ track }: AudiobookListItemProps) {
@@ -45,7 +40,7 @@ export default function AudiobookListItem({ track }: AudiobookListItemProps) {
         <View>
           <FastImage
             source={{
-              uri: track.image ?? unknownCoverImageUri,
+              uri: track.cover ?? unknownCoverImageUri,
               priority: FastImage.priority.normal,
             }}
             style={{

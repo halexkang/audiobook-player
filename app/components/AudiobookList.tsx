@@ -1,9 +1,16 @@
 import { FlatList, FlatListProps, Text, View } from 'react-native'
 import AudiobookListItem from "./AudiobookListItem";
 import { utilsStyles } from '@/styles/styles';
+import { Track } from "react-native-track-player";
 
-export type AudiobookListProps = Partial<FlatListProps<unknown>> & {
-    tracks: any[]
+export type ExtendedTrack = Track & {
+    cover?: string;
+    total?: number;
+    current?: number;
+  };
+
+export type AudiobookListProps = Partial<FlatListProps<ExtendedTrack>> & {
+    tracks: ExtendedTrack[]
 }
 
 const Divider = () => (
@@ -17,7 +24,7 @@ export default function AudiobookList({tracks, ...audiobookListProbs}: Audiobook
         contentContainerStyle={{paddingTop: 10, paddingBottom: 130 }}
         ItemSeparatorComponent={Divider}
         renderItem={({ item: track }) => (
-            <AudiobookListItem track={{...track, image: track.cover}} />
+            <AudiobookListItem track={track} />
         )} 
         {...audiobookListProbs}/>
     )
