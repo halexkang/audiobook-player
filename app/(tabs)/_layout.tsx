@@ -2,17 +2,17 @@ import { Tabs } from "expo-router";
 
 export default function TabsLayout() {
     return (
-			<Tabs>
+			<Tabs screenOptions={{ tabBarActiveTintColor: 'blue' }}>
 				<Tabs.Screen
-					name="library"
+					name="index"
 					options={{
 						title: 'Library',
 					}}
 				/>
 				<Tabs.Screen
-					name="explore"
+					name="bookmark"
 					options={{
-						title: 'Explore',
+						title: 'Bookmark',
 					}}
 				/>
 				<Tabs.Screen
