@@ -9,7 +9,7 @@ import { Entypo } from "@expo/vector-icons";
 import { ExtendedTrack } from "./AudiobookList";
 
 export type AudiobookListItemProps = {
-  track: ExtendedTrack
+  track: ExtendedTrack;
 };
 
 export default function AudiobookListItem({ track }: AudiobookListItemProps) {
