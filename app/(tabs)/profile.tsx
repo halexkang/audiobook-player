@@ -1,10 +1,10 @@
 import { Text, View } from "react-native";
 import { defaultStyles } from "@/styles/styles";
 
-export default function BookmarkScreen() {
+export default function Profilecreen() {
   return (
     <View style={defaultStyles.container}>
-      <Text>Bookmark Screen</Text>
+      <Text>Profile Screen</Text>
     </View>
   );
 }

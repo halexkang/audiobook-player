@@ -1,14 +1,9 @@
+import { defaultStyles } from "@/styles/styles";
 import { Text, View } from "react-native";
 
 export default function LibraryScreen() {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <View style={defaultStyles.container}>
       <Text>Library Screen</Text>
     </View>
   );
