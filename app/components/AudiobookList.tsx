@@ -1,7 +1,7 @@
-import { FlatList, FlatListProps, Text, View } from "react-native";
-import AudiobookListItem from "./AudiobookListItem";
 import { utilsStyles } from "@/styles/styles";
+import { FlatList, FlatListProps, Text, View } from "react-native";
 import TrackPlayer, { Track } from "react-native-track-player";
+import AudiobookListItem from "./AudiobookListItem";
 
 export type Audiobook = Track & {
   cover?: string;

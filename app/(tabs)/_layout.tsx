@@ -8,7 +8,7 @@ import {
   FontAwesome6,
   Ionicons,
 } from "@expo/vector-icons";
-import { FloatingPlayer } from "../components/FloatingPlayer";
+import { MiniPlayer } from "../components/MiniPlayer";
 import React from "react";
 
 export default function TabsLayout() {
@@ -79,7 +79,7 @@ export default function TabsLayout() {
           }}
         />
       </Tabs>
-      <FloatingPlayer
+      <MiniPlayer
         style={{
           position: "absolute",
           bottom: 78,

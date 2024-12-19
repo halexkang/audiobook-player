@@ -1,13 +1,18 @@
-import { unknownCoverImageUri } from "@/constants/images";
-import { TouchableHighlight, TouchableOpacity, View } from "react-native";
-import FastImage from "react-native-fast-image";
-import { StyleSheet, Text } from "react-native";
-import { defaultStyles } from "@/styles/styles";
 import { colors, fontSize } from "@/constants/constants";
-import * as Progress from "react-native-progress";
+import { unknownCoverImageUri } from "@/constants/images";
+import { defaultStyles } from "@/styles/styles";
 import { Entypo, FontAwesome6 } from "@expo/vector-icons";
-import { Audiobook } from "./AudiobookList";
+import {
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import FastImage from "react-native-fast-image";
+import * as Progress from "react-native-progress";
 import { useActiveTrack, useIsPlaying } from "react-native-track-player";
+import { Audiobook } from "./AudiobookList";
 
 export type AudiobookListItemProps = {
   audiobook: Audiobook;

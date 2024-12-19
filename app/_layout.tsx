@@ -1,11 +1,11 @@
 import { playbackService } from "@/constants/playbackService";
+import { useLogPlayerState } from "@/hooks/useLogPlayerState";
+import { useSetupPlayer } from "@/hooks/useSetupPlayer";
 import { SplashScreen, Stack } from "expo-router";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { useCallback } from "react";
-import { useSetupPlayer } from "@/hooks/useSetupPlayer";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import TrackPlayer from "react-native-track-player";
-import { useLogPlayerState } from "@/hooks/useLogPlayerState";
 
 SplashScreen.preventAutoHideAsync();
 TrackPlayer.registerPlaybackService(() => playbackService);
