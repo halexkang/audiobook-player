@@ -1,53 +1,58 @@
 import { unknownCoverImageUri } from "@/constants/images";
-import { TouchableHighlight, View } from "react-native";
+import { TouchableHighlight, TouchableOpacity, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import { StyleSheet, Text } from "react-native";
 import { defaultStyles } from "@/styles/styles";
 import { colors, fontSize } from "@/constants/constants";
 import * as Progress from "react-native-progress";
-import { Entypo } from "@expo/vector-icons";
-import { ExtendedTrack } from "./AudiobookList";
+import { Entypo, FontAwesome6 } from "@expo/vector-icons";
+import { Audiobook } from "./AudiobookList";
+import { useActiveTrack, useIsPlaying } from "react-native-track-player";
 
 export type AudiobookListItemProps = {
-  track: ExtendedTrack;
+  audiobook: Audiobook;
+  onSelect: (audiobook: Audiobook) => void;
 };
 
-export default function AudiobookListItem({ track }: AudiobookListItemProps) {
-  const isActiveTrack = false;
+export default function AudiobookListItem({
+  audiobook,
+  onSelect,
+}: AudiobookListItemProps) {
+  const isActive = useActiveTrack()?.url === audiobook.url;
+  const { playing } = useIsPlaying();
   const getRemainingTime = () => {
-    if (!track.total) {
+    if (!audiobook.total) {
       return "N/A";
     }
     var curr = 0;
-    if (track.current) {
-      curr = track.current;
+    if (audiobook.current) {
+      curr = audiobook.current;
     }
-    const remainingTime = track.total;
+    const remainingTime = audiobook.total;
     const hours = Math.floor(remainingTime / 3600);
     const minutes = Math.floor((remainingTime % 3600) / 60);
     return `${hours}h ${minutes}m left`;
   };
   return (
-    <TouchableHighlight>
+    <TouchableHighlight onPress={() => onSelect(audiobook)}>
       <View
         style={{
           flexDirection: "row",
           columnGap: 14,
           alignItems: "center",
-          paddingRight: 20,
         }}
       >
         <View>
           <FastImage
             source={{
-              uri: track.cover ?? unknownCoverImageUri,
+              uri: audiobook.cover ?? unknownCoverImageUri,
               priority: FastImage.priority.normal,
             }}
             style={{
               borderRadius: 8,
               width: 70,
               height: 70,
-              opacity: isActiveTrack ? 0.6 : 1,
+              opacity: isActive ? 0.6 : 1,
             }}
           />
         </View>
@@ -68,14 +73,14 @@ export default function AudiobookListItem({ track }: AudiobookListItemProps) {
                 fontSize: fontSize.sm,
                 fontWeight: "600",
                 maxWidth: "90%",
-                color: isActiveTrack ? colors.primary : colors.text,
+                color: colors.text,
               }}
             >
-              {track.title}
+              {audiobook.title}
             </Text>
-            {track.author && (
+            {audiobook.author && (
               <Text numberOfLines={1} style={styles.regularText}>
-                {track.author}
+                {audiobook.author}
               </Text>
             )}
             <View
@@ -87,19 +92,34 @@ export default function AudiobookListItem({ track }: AudiobookListItemProps) {
             >
               <Progress.Bar
                 progress={
-                  track.total && track.current
-                    ? Math.round((track.current / track.total) * 100) / 100
+                  audiobook.total && audiobook.current
+                    ? Math.round((audiobook.current / audiobook.total) * 100) /
+                      100
                     : 0
                 }
                 width={75}
                 color={colors.primary}
+                borderWidth={0}
+                unfilledColor={colors.grayBackground}
               />
               <Text numberOfLines={1} style={styles.regularText}>
                 {getRemainingTime()}
               </Text>
             </View>
           </View>
-          <Entypo name="dots-three-horizontal" size={18} color={colors.icon} />
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
+            columnGap: 16,
+          }}
+        >
+          <FontAwesome6
+            name={isActive && playing ? "circle-pause" : "circle-play"}
+            size={22}
+            color={colors.text}
+          />
+          <Entypo name="dots-three-horizontal" size={22} color={colors.icon} />
         </View>
       </View>
     </TouchableHighlight>

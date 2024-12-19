@@ -6,6 +6,8 @@ export const colors = {
   text: "#fff",
   textMuted: "#9ca3af",
   icon: "#fff",
+  grayBackground: "#252525",
+  semiTransparentBackground: "rgba(0,0,0,0.5)",
   maximumTrackTintColor: "rgba(255,255,255,0.4)",
   minimumTrackTintColor: "rgba(255,255,255,0.6)",
 };
@@ -23,14 +25,14 @@ export const screenPadding = {
 
 export const StackWithSearchBar: NativeStackNavigationOptions = {
   headerLargeTitle: true,
-  headerStyle: {
-    backgroundColor: "rgba(0, 0, 0, 0.90)",
+  headerLargeStyle: {
+    backgroundColor: colors.background,
   },
   headerLargeTitleStyle: {
     color: colors.text,
   },
   headerTintColor: colors.text,
   headerTransparent: true,
-  headerBlurEffect: "light",
+  headerBlurEffect: "dark",
   headerShadowVisible: false,
 };

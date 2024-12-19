@@ -27,7 +27,7 @@ export default function LibraryScreen() {
         { paddingHorizontal: screenPadding.horizontal },
       ]}
     >
-      <AudiobookList tracks={filterAudiobooks} scrollEnabled={false} />
+      <AudiobookList audiobooks={filterAudiobooks} scrollEnabled={false} />
     </ScrollView>
   );
 }
