@@ -7,14 +7,13 @@ import { colors, fontSize } from "@/constants/constants";
 import * as Progress from "react-native-progress";
 import { Entypo } from "@expo/vector-icons";
 import { ExtendedTrack } from "./AudiobookList";
-import useActiveTrack from "react-native-track-player";
 
 export type AudiobookListItemProps = {
   track: ExtendedTrack;
 };
 
 export default function AudiobookListItem({ track }: AudiobookListItemProps) {
-  const isActiveTrack = useActiveTrack()?.url === track.url;
+  const isActiveTrack = false;
   const getRemainingTime = () => {
     if (!track.total) {
       return "N/A";
