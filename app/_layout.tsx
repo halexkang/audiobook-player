@@ -5,6 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import { useCallback } from "react";
 import { useSetupPlayer } from "@/hooks/useSetupPlayer";
 import TrackPlayer from "react-native-track-player";
+import { useLogPlayerState } from "@/hooks/useLogPlayerState";
 
 SplashScreen.preventAutoHideAsync();
 TrackPlayer.registerPlaybackService(() => playbackService);
@@ -17,6 +18,8 @@ const RootLayout = () => {
   useSetupPlayer({
     onLoad: handleTrackPlayerLoaded,
   });
+
+  useLogPlayerState();
   return (
     <SafeAreaProvider>
       <Stack>
