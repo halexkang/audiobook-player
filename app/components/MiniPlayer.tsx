@@ -41,6 +41,7 @@ export const MiniPlayer = ({ style }: ViewProps) => {
               fontWeight: "600",
               paddingLeft: 10,
             }}
+            numberOfLines={1}
           >
             {displayedTrack.title ?? ""}
           </Text>
