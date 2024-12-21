@@ -109,8 +109,7 @@ export default function MainPlayerScreen() {
               loop={true}
               delay={1500}
             >
-              Chapter 1 this is one of the extremely long chapter titles you
-              will see something hahahah
+              {text}
             </MarqueeText>
           </View>
           <Text>Herro</Text>
