@@ -111,5 +111,17 @@
       "title": "Hidden Frozen Lake - Go By Ocean",
       "author": "Ryan McCaffrey",
       "collections": ["Chill 🌱"]
+    },
+    {
+      "url": "/Users/alexkang/code/personal/audiobook-player/assets/audiobooks/same.mp3",
+      "title": "same",
+      "author": "Ryan McCaffrey",
+      "collections": ["Chill 🌱"]
+    },
+    {
+      "url": "/Users/alexkang/code/personal/audiobook-player/assets/audiobooks/Designing Data-Intensive Applications.m4b",
+      "title": "DDID",
+      "author": "Ryan McCaffrey",
+      "collections": ["Chill 🌱"]
     }
   ]

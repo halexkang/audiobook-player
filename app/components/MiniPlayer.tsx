@@ -2,20 +2,27 @@ import { colors } from "@/constants/constants";
 import { unknownCoverImageUri } from "@/constants/images";
 import { useLastActiveAudiobook } from "@/hooks/useLastActiveAudiobook";
 import { defaultStyles } from "@/styles/styles";
+import { useRouter } from "expo-router";
 import React from "react";
 import { Text, TouchableOpacity, View, ViewProps } from "react-native";
 import FastImage from "react-native-fast-image";
 import { useActiveTrack } from "react-native-track-player";
 import { PlayPauseButton, Rewind30Button } from "./AudioPlayerControls";
 export const MiniPlayer = ({ style }: ViewProps) => {
+  const router = useRouter();
   const activeAudiobook = useActiveTrack();
   const lastActiveAudiobook = useLastActiveAudiobook();
 
   const displayedTrack = activeAudiobook ?? lastActiveAudiobook;
   if (!displayedTrack) return null;
 
+  const handlePress = () => {
+    router.navigate("/mainPlayer");
+  };
+
   return (
     <TouchableOpacity
+      onPress={handlePress}
       style={[
         {
           flexDirection: "row",

@@ -1,3 +1,4 @@
+import { colors } from "@/constants/constants";
 import { playbackService } from "@/constants/playbackService";
 import { useLogPlayerState } from "@/hooks/useLogPlayerState";
 import { useSetupPlayer } from "@/hooks/useSetupPlayer";
@@ -10,7 +11,7 @@ import TrackPlayer from "react-native-track-player";
 SplashScreen.preventAutoHideAsync();
 TrackPlayer.registerPlaybackService(() => playbackService);
 
-const RootLayout = () => {
+export default function RootLayout() {
   const handleTrackPlayerLoaded = useCallback(() => {
     SplashScreen.hideAsync();
   }, []);
@@ -24,10 +25,18 @@ const RootLayout = () => {
     <SafeAreaProvider>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="mainPlayer"
+          options={{
+            presentation: "card",
+            gestureEnabled: true,
+            gestureDirection: "vertical",
+            animationDuration: 400,
+            headerShown: false,
+          }}
+        />
       </Stack>
       <StatusBar style="auto" />
     </SafeAreaProvider>
   );
-};
-
-export default RootLayout;
+}
