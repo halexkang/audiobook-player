@@ -1,6 +1,6 @@
 import { utilsStyles } from "@/styles/styles";
 import { FlatList, FlatListProps, Text, View } from "react-native";
-import TrackPlayer, { Track } from "react-native-track-player";
+import { Track } from "react-native-track-player";
 import AudiobookListItem from "./AudiobookListItem";
 
 export type Audiobook = Track & {
@@ -23,10 +23,6 @@ export default function AudiobookList({
   audiobooks,
   ...audiobookListProbs
 }: AudiobookListProps) {
-  const handleSelect = async (audiobook: Audiobook) => {
-    await TrackPlayer.load(audiobook);
-    await TrackPlayer.play();
-  };
   return (
     <FlatList
       data={audiobooks}
@@ -38,7 +34,7 @@ export default function AudiobookList({
         </View>
       }
       renderItem={({ item: audiobook }) => (
-        <AudiobookListItem audiobook={audiobook} onSelect={handleSelect} />
+        <AudiobookListItem audiobook={audiobook} />
       )}
       {...audiobookListProbs}
     />

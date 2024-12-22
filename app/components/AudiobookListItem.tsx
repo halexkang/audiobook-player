@@ -2,29 +2,34 @@ import { colors, fontSize } from "@/constants/constants";
 import { unknownCoverImageUri } from "@/constants/images";
 import { defaultStyles } from "@/styles/styles";
 import { Entypo, FontAwesome6 } from "@expo/vector-icons";
-import {
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, Text, TouchableHighlight, View } from "react-native";
 import FastImage from "react-native-fast-image";
 import * as Progress from "react-native-progress";
-import { useActiveTrack, useIsPlaying } from "react-native-track-player";
+import TrackPlayer, {
+  useActiveTrack,
+  useIsPlaying,
+} from "react-native-track-player";
 import { Audiobook } from "./AudiobookList";
 
 export type AudiobookListItemProps = {
   audiobook: Audiobook;
-  onSelect: (audiobook: Audiobook) => void;
 };
 
 export default function AudiobookListItem({
   audiobook,
-  onSelect,
 }: AudiobookListItemProps) {
   const isActive = useActiveTrack()?.url === audiobook.url;
   const { playing } = useIsPlaying();
+
+  const handleSelect = async (audiobook: Audiobook) => {
+    if (isActive && playing) {
+      await TrackPlayer.pause();
+    } else {
+      await TrackPlayer.load(audiobook);
+      await TrackPlayer.play();
+    }
+  };
+
   const getRemainingTime = () => {
     if (!audiobook.total) {
       return "N/A";
@@ -39,11 +44,11 @@ export default function AudiobookListItem({
     return `${hours}h ${minutes}m left`;
   };
   return (
-    <TouchableHighlight onPress={() => onSelect(audiobook)}>
+    <TouchableHighlight onPress={() => handleSelect(audiobook)}>
       <View
         style={{
           flexDirection: "row",
-          columnGap: 14,
+          columnGap: 20,
           alignItems: "center",
         }}
       >
@@ -57,7 +62,6 @@ export default function AudiobookListItem({
               borderRadius: 8,
               width: 70,
               height: 70,
-              opacity: isActive ? 0.6 : 1,
             }}
           />
         </View>
@@ -77,7 +81,6 @@ export default function AudiobookListItem({
                 ...defaultStyles.text,
                 fontSize: fontSize.sm,
                 fontWeight: "600",
-                maxWidth: "90%",
                 color: colors.text,
               }}
             >
@@ -85,7 +88,7 @@ export default function AudiobookListItem({
             </Text>
             {audiobook.author && (
               <Text numberOfLines={1} style={styles.regularText}>
-                {audiobook.author}
+                {"By " + audiobook.author}
               </Text>
             )}
             <View

@@ -1,10 +1,10 @@
-import { colors } from "@/constants/constants";
+import { colors, screenPadding } from "@/constants/constants";
 import { unknownCoverImageUri } from "@/constants/images";
 import { useLastActiveAudiobook } from "@/hooks/useLastActiveAudiobook";
 import { defaultStyles } from "@/styles/styles";
 import { useRouter } from "expo-router";
 import React from "react";
-import { Text, TouchableOpacity, View, ViewProps } from "react-native";
+import { Pressable, Text, View, ViewProps } from "react-native";
 import FastImage from "react-native-fast-image";
 import { useActiveTrack } from "react-native-track-player";
 import { PlayPauseButton, Rewind30Button } from "./AudioPlayerControls";
@@ -17,18 +17,19 @@ export const MiniPlayer = ({ style }: ViewProps) => {
   if (!displayedTrack) return null;
 
   const handlePress = () => {
-    router.navigate("/mainPlayer");
+    router.navigate("/MainPlayer");
   };
 
   return (
-    <TouchableOpacity
+    <Pressable
       onPress={handlePress}
       style={[
         {
           flexDirection: "row",
           alignItems: "center",
           backgroundColor: colors.grayBackground,
-          padding: 10,
+          paddingVertical: 10,
+          paddingHorizontal: screenPadding.horizontal + 10,
         },
         style,
       ]}
@@ -58,14 +59,12 @@ export const MiniPlayer = ({ style }: ViewProps) => {
             flexDirection: "row",
             alignItems: "center",
             columnGap: 20,
-            marginRight: 16,
-            paddingLeft: 16,
           }}
         >
           <Rewind30Button iconSize={22} />
           <PlayPauseButton iconSize={28} />
         </View>
       </>
-    </TouchableOpacity>
+    </Pressable>
   );
 };

@@ -1,15 +1,15 @@
 import { colors, fontSize } from "@/constants/constants";
-import { Tabs } from "expo-router";
-import { BlurView } from "expo-blur";
-import { StyleSheet } from "react-native";
 import {
   FontAwesome,
-  MaterialCommunityIcons,
   FontAwesome6,
   Ionicons,
+  MaterialCommunityIcons,
 } from "@expo/vector-icons";
-import { MiniPlayer } from "../components/MiniPlayer";
+import { BlurView } from "expo-blur";
+import { Tabs } from "expo-router";
 import React from "react";
+import { StyleSheet } from "react-native";
+import { MiniPlayer } from "../components/MiniPlayer";
 
 export default function TabsLayout() {
   return (
@@ -82,7 +82,7 @@ export default function TabsLayout() {
       <MiniPlayer
         style={{
           position: "absolute",
-          bottom: 78,
+          bottom: 83,
         }}
       />
     </>

@@ -26,7 +26,7 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen
-          name="mainPlayer"
+          name="MainPlayer"
           options={{
             presentation: "card",
             gestureEnabled: true,

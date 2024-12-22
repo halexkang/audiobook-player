@@ -29,7 +29,7 @@ export const PlayPauseButton = ({ style, iconSize }: PlayerButtonProps) => {
 
   return (
     <TouchableOpacity
-      activeOpacity={0.85}
+      activeOpacity={0.8}
       onPress={playing ? TrackPlayer.pause : TrackPlayer.play}
     >
       <FontAwesome6
@@ -44,7 +44,7 @@ export const PlayPauseButton = ({ style, iconSize }: PlayerButtonProps) => {
 export const Rewind30Button = ({ iconSize }: PlayerButtonProps) => {
   return (
     <TouchableOpacity
-      activeOpacity={0.7}
+      activeOpacity={0.8}
       onPress={() => TrackPlayer.seekBy(30)}
     >
       <FontAwesome6
