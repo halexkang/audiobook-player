@@ -8,6 +8,7 @@ export const colors = {
   icon: "#fff",
   grayBackground: "#252525",
   semiTransparentBackground: "rgba(0,0,0,0.5)",
+  touchableBackground: "rgba(211, 211, 211, 0.1)",
   maximumTrackTintColor: "rgba(255,255,255,0.4)",
   minimumTrackTintColor: "rgba(255,255,255,0.6)",
 };

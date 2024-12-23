@@ -1,30 +1,14 @@
 import { colors } from "@/constants/constants";
 import { FontAwesome6 } from "@expo/vector-icons";
+import Feather from "@expo/vector-icons/Feather";
 import { StyleSheet, TouchableOpacity, View, ViewStyle } from "react-native";
 import TrackPlayer, { useIsPlaying } from "react-native-track-player";
 
-type PlayerControlsProps = {
-  style?: ViewStyle;
-};
-
 type PlayerButtonProps = {
-  style?: ViewStyle;
   iconSize?: number;
 };
 
-// export const PlayerControls = ({ style }: PlayerControlsProps) => {
-//   return (
-//     <View style={[styles.container, style]}>
-//       <View style={styles.row}>
-//         <SkipToPreviousButton />
-//         <PlayPauseButton />
-//         <SkipToNextButton />
-//       </View>
-//     </View>
-//   );
-// };
-
-export const PlayPauseButton = ({ style, iconSize }: PlayerButtonProps) => {
+export const PlayPauseButton = ({ iconSize }: PlayerButtonProps) => {
   const { playing } = useIsPlaying();
 
   return (
@@ -41,7 +25,7 @@ export const PlayPauseButton = ({ style, iconSize }: PlayerButtonProps) => {
   );
 };
 
-export const Rewind30Button = ({ iconSize }: PlayerButtonProps) => {
+export const RewindButton = ({ iconSize }: PlayerButtonProps) => {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
@@ -56,13 +40,39 @@ export const Rewind30Button = ({ iconSize }: PlayerButtonProps) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-  },
-  row: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    alignItems: "center",
-  },
-});
+export const ForwardButton = ({ iconSize }: PlayerButtonProps) => {
+  return (
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() => TrackPlayer.seekBy(30)}
+    >
+      <FontAwesome6
+        name="arrow-rotate-right"
+        size={iconSize}
+        color={colors.text}
+      />
+    </TouchableOpacity>
+  );
+};
+
+export const PreviousButton = ({ iconSize }: PlayerButtonProps) => {
+  return (
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() => TrackPlayer.seekBy(30)}
+    >
+      <Feather name="skip-back" size={iconSize} color={colors.text} />
+    </TouchableOpacity>
+  );
+};
+
+export const NextButton = ({ iconSize }: PlayerButtonProps) => {
+  return (
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() => TrackPlayer.seekBy(30)}
+    >
+      <Feather name="skip-forward" size={iconSize} color={colors.text} />
+    </TouchableOpacity>
+  );
+};

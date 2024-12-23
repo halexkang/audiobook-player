@@ -7,7 +7,7 @@ import React from "react";
 import { Pressable, Text, View, ViewProps } from "react-native";
 import FastImage from "react-native-fast-image";
 import { useActiveTrack } from "react-native-track-player";
-import { PlayPauseButton, Rewind30Button } from "./AudioPlayerControls";
+import { PlayPauseButton, RewindButton } from "./AudioPlayerControls";
 export const MiniPlayer = ({ style }: ViewProps) => {
   const router = useRouter();
   const activeAudiobook = useActiveTrack();
@@ -61,7 +61,7 @@ export const MiniPlayer = ({ style }: ViewProps) => {
             columnGap: 20,
           }}
         >
-          <Rewind30Button iconSize={22} />
+          <RewindButton iconSize={22} />
           <PlayPauseButton iconSize={28} />
         </View>
       </>
